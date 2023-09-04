@@ -1,0 +1,7 @@
+[versions]
+kotlin = "1.8.22"
+skie = "0.4.18-preview"
+
+[libraries]
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.7.3" }
+skie-annotations = { module = "co.touchlab.skie:configuration-annotations", version.ref = "skie" }
