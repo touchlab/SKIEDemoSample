@@ -35,13 +35,4 @@ kotlin {
     }
 }
 
-skie {
-    features {
-        group("co.touchlab.skie.types") {
-            SealedInterop.Enabled(false)
-            EnumInterop.Enabled(false)
-        }
-    }
-}
-
 version = "1.2"

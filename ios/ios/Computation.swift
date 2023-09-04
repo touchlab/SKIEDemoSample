@@ -20,27 +20,27 @@ class Computation : ObservableObject {
         
         if (entryType == .operation) {
             let operationType = OperationTypeKt.lookupOperationType(
-                value: inputValue, defaultValue: OperationType.Unknown(message: "unknown")
+                value: inputValue
             )
             handleMathOperation(operationType: operationType)
         }
     }
     
     func handleMathOperation(operationType: OperationType) {
-        switch operationType {
-        case is OperationType.Clear:
+        switch onEnum(of: operationType) {
+        case .clear:
             doClear()
-        case is OperationType.Delete:
+        case .delete:
             doDelete()
-        case is OperationType.Equals:
+        case .equals:
             doEquals()
-        case is OperationType.Plus,
-            is OperationType.Minus,
-            is OperationType.Multiply,
-            is OperationType.Divide:
+        case .plus,
+            .minus,
+            .multiply,
+            .divide:
             doMathOperation(operationType: operationType)
-        default:
-            failApp() // This should never happen :)
+        case .unknown(let result):
+            print("Unknown \(result.message)")
         }
     }
     
@@ -75,8 +75,6 @@ class Computation : ObservableObject {
             readout = current
         case .operation:
             replaceDigit = inputValue != "<"
-        default:
-            print("Do nothing")
         }
     }
     
