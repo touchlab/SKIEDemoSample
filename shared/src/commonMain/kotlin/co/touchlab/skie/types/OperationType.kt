@@ -1,7 +1,5 @@
 package co.touchlab.skie.types
 
-import co.touchlab.skie.configuration.annotations.DefaultArgumentInterop
-
 sealed class OperationType {
     data class Unknown(val message: String) : OperationType()
     object Plus : OperationType()
@@ -13,7 +11,6 @@ sealed class OperationType {
     object Equals : OperationType()
 }
 
-@DefaultArgumentInterop.Enabled
 fun lookupOperationType(
     value: String,
     defaultValue: OperationType = OperationType.Unknown("Oops")
