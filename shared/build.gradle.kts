@@ -1,5 +1,6 @@
 import co.touchlab.skie.configuration.EnumInterop
 import co.touchlab.skie.configuration.SealedInterop
+import co.touchlab.skie.plugin.configuration.SkieExtension
 
 plugins {
     kotlin("multiplatform")
@@ -35,7 +36,7 @@ kotlin {
     }
 }
 
-skie {
+extensions.getByType<SkieExtension>().apply {
     features {
         group("co.touchlab.skie.types") {
             SealedInterop.Enabled(false)
