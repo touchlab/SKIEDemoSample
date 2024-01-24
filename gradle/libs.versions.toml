@@ -1,7 +1,13 @@
 [versions]
-kotlin = "1.9.0"
-skie = "0.4.19"
+kotlin = "1.9.22"
+skie = "0.6.1"
+coroutines = "1.7.3"
 
 [libraries]
-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.7.3" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 skie-annotations = { module = "co.touchlab.skie:configuration-annotations", version.ref = "skie" }
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+skie = { id = "co.touchlab.skie", version.ref = "skie" }
+cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
