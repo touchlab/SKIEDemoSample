@@ -2,30 +2,19 @@ import co.touchlab.skie.configuration.EnumInterop
 import co.touchlab.skie.configuration.SealedInterop
 
 plugins {
-    kotlin("multiplatform")
-    kotlin("native.cocoapods")
-    id("co.touchlab.skie") version libs.versions.skie.get()
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.cocoapods)
+    alias(libs.plugins.skie)
 }
 
 kotlin {
-    ios()
+    iosX64()
+    iosArm64()
     iosSimulatorArm64()
 
-    val commonMain by sourceSets.getting {
-        dependencies {
-            implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.skie.annotations)
-        }
-    }
-
-    val iosMain by sourceSets.getting
-    val iosTest by sourceSets.getting
-
-    val iosSimulatorArm64Main by sourceSets.getting {
-        dependsOn(iosMain)
-    }
-    val iosSimulatorArm64Test by sourceSets.getting {
-        dependsOn(iosTest)
+    sourceSets.commonMain.dependencies {
+        implementation(libs.kotlinx.coroutines.core)
+        implementation(libs.skie.annotations)
     }
 
     cocoapods {

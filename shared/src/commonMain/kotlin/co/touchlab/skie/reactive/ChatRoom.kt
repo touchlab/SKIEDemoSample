@@ -10,6 +10,7 @@ class ChatRoom {
     private val _messages = MutableStateFlow(emptyList<String>())
     val messages: StateFlow<List<String>> = _messages
 
+    @Suppress("MemberVisibilityCanBePrivate")
     suspend fun send(message: String) {
         delay(1.seconds)
 
@@ -21,4 +22,3 @@ class ChatRoom {
         send(message)
     }
 }
-
